@@ -16,7 +16,7 @@ const ua = new UserAgent();
 const port = process.env.PORT || 3000;
 
 // Serve static files (Frontend)
-app.use(express.static(path.join(__dirname, '../frontend/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Generate Temp Email (TempMail)
 async function generateEmail() {
