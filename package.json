@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "faker": "^5.5.3",
     "qs": "^6.10.1",
-    "random": "^1.0.3",
+    "random": "^4.1.0",
     "user-agents": "^1.0.0"
   },
   "author": "Yasis",
