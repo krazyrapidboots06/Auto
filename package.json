@@ -12,7 +12,7 @@
     "faker": "^5.5.3",
     "qs": "^6.10.1",
     "random": "^4.1.0",
-    "user-agents": "^1.0.0"
+    "user-agents": "^1.1.2"
   },
   "author": "Yasis",
   "license": "ISC"
