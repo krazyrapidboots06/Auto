@@ -3,7 +3,7 @@ const axios = require("axios");
 const faker = require("faker");
 const random = require("random");
 const qs = require("qs");
-const { UserAgent } = require("user-agents");
+const UserAgent = require('user-agents');
 
 const ua = new UserAgent();
 
