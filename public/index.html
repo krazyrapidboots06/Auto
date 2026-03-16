@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FB Account Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      cursor: pointer;
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FB Account Generator</h1>
+
+  <button class="button" id="generateEmail">Generate Email</button>
+
+  <div id="emailSection" style="display:none;">
+    <h3>Generated Email:</h3>
+    <p id="generatedEmail"></p>
+    <button class="button" id="checkOTP">Check OTP</button>
+  </div>
+
+  <div id="resultSection" class="result" style="display:none;">
+    <h3>Registration Status</h3>
+    <p id="resultMessage"></p>
+  </div>
+
+  <script>
+    const generateEmailButton = document.getElementById('generateEmail');
+    const checkOTPButton = document.getElementById('checkOTP');
+    const emailSection = document.getElementById('emailSection');
+    const resultSection = document.getElementById('resultSection');
+    const generatedEmail = document.getElementById('generatedEmail');
+    const resultMessage = document.getElementById('resultMessage');
+
+    // API URL (relative to the backend server)
+    const API_URL = "/fb_otp_auto_create"; // Backend route to be used
+
+    // Function to generate a new email
+    generateEmailButton.addEventListener('click', async () => {
+      try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        
+        if (data.email) {
+          generatedEmail.textContent = data.email;
+          emailSection.style.display = 'block';
+        }
+      } catch (error) {
+        console.error("Error generating email:", error);
+      }
+    });
+
+    // Function to check OTP and register
+    checkOTPButton.addEventListener('click', async () => {
+      const email = generatedEmail.textContent;
+      try {
+        const response = await fetch(`${API_URL}?email=${email}`);
+        const data = await response.json();
+        
+        if (data.status) {
+          resultMessage.textContent = "Account successfully registered!";
+        } else {
+          resultMessage.textContent = "Registration failed. Please try again.";
+        }
+        
+        resultSection.style.display = 'block';
+      } catch (error) {
+        console.error("Error during registration:", error);
+      }
+    });
+  </script>
+
+</body>
+</html>
