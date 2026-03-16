@@ -1,22 +1,18 @@
 {
   "name": "fb-account-generator",
   "version": "1.0.0",
-  "description": "Automatically generate Facebook accounts with email, OTP, and registration",
+  "description": "Automated Facebook Registration with OTP detection using TempMail",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.27.2",
     "express": "^4.17.1",
     "faker": "^5.5.3",
-    "qs": "^6.9.6",
-    "random": "^2.1.0",
-    "user-agents": "^1.0.226"
-  },
-  "devDependencies": {},
-  "engines": {
-    "node": ">=14.0.0"
+    "qs": "^6.10.1",
+    "random": "^1.0.3",
+    "user-agents": "^1.0.0"
   },
   "author": "Yasis",
   "license": "ISC"
